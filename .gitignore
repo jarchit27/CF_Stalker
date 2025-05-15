@@ -22,5 +22,3 @@ build/
 
 # Ignore config file
 backend/config.js
-
-
