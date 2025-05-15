@@ -10,7 +10,7 @@ const problemSchema = new Schema({
   platform:{
     type:String,
     required : true,
-    enum: ['LeetCode', 'Codeforces', 'CodeChef' ,'GeeksforGeeks', 'HackerRank','AtCoder', 'TopCoder' ,'Other'], // optional
+    enum: ['LeetCode', 'Codeforces', 'CodeChef' ,'GeeksforGeeks', 'HackerRank','AtCoder', 'TopCoder' ,'Other'],
 
   },
   difficulty:{

@@ -222,27 +222,39 @@ app.get("/get-all-friends/" , authenticateToken ,async(req, res)=>{44
 
 app.post("/add-problem" , authenticateToken ,async(req, res)=>{
 
-    const {handle, name} = req.body;
+    const {questionName,platform,difficulty,questionLink,notes ,tags} = req.body;
     const { user } = req.user;
 
-    if(!handle){
-        return res.status(400).json({error:true , message: "Handle is required"})
+    if(!questionName){
+        return res.status(400).json({error:true , message: "Question Name is required"})
     }
-    if(!name){
-        return res.status(400).json({error:true , message: "Friend is required"})
+    if(!platform){
+        return res.status(400).json({error:true , message: "Platform is required"})
+    }
+
+    if(!difficulty){
+        return res.status(400).json({error:true , message: "Difficulty Level is required"})
+    }
+
+    if(!questionLink){
+        return res.status(400).json({error:true , message: "Link of Question is required"})
+    }
+
+    if(!notes){
+        return res.status(400).json({error:true , message: "Note is required"})
     }
 
     try{
-        const friend = new Friend({
-            handle, 
-            name, 
+        const problem = new Problem({
+            questionName,platform,difficulty,questionLink,notes ,
+            tags: tags || [],
             userId: user._id,
         });
-        await friend.save();
+        await problem.save();
         return res.json({
             error: false,
-            friend,
-            message:"Friend added successfully",
+            problem,
+            message:"Problem added successfully",
         })
     }
     catch(error){
@@ -252,6 +264,31 @@ app.post("/add-problem" , authenticateToken ,async(req, res)=>{
         });
     }
 });
+
+
+app.delete("/delete-problem/:problemId" , authenticateToken ,async(req, res)=>{
+    const problemId = req.params.problemId;
+    const {user} = req.user;
+    try{
+        const problem = await Problem.findOne({_id:problemId, userId: user._id});
+
+        if(!problem)
+            return res.status(401).json({error:true, message:"Problem not found"})
+
+        await Problem.deleteOne({_id: problemId, userId: user._id});
+        return res.json({
+            error: false,
+            message:"Problem deleted successfully"
+        })
+    }
+    catch(error){
+        return res.status(500).json({
+            error:true,
+            message: "Internal Server Error"
+        });
+    }
+});
+
 
 
 
