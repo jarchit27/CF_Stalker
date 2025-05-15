@@ -1,7 +1,7 @@
 # Node modules
 backend/node_modules/
 frontend/cp_help/node_modules/
-backend/config.js
+backend/config.json
 # Environment files
 .env
 
