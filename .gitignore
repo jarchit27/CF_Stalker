@@ -1,0 +1,24 @@
+# Node modules
+backend/node_modules/
+frontend/cp_help/node_modules/
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build files
+dist/
+build/
+
+# Vite and other temp files
+.vite/
+.cache/
+
+# Ignore config file
+backend/config.js
