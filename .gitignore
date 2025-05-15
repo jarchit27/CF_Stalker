@@ -1,7 +1,7 @@
 # Node modules
 backend/node_modules/
 frontend/cp_help/node_modules/
-
+backend/config.js
 # Environment files
 .env
 
@@ -21,4 +21,3 @@ build/
 .cache/
 
 # Ignore config file
-backend/config.js
