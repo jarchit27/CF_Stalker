@@ -289,6 +289,26 @@ app.delete("/delete-problem/:problemId" , authenticateToken ,async(req, res)=>{
     }
 });
 
+app.get("/get-all-problems/" , authenticateToken ,async(req, res)=>{44
+    const {user} = req.user;
+
+    try{
+        const problems = await Problem.find({userId: user._id});
+        return res.json({
+            error: false,
+            problems,
+            message:"All Problems successfully",
+        });
+
+    }
+    catch(error){
+        return res.status(500).json({
+            error:true,
+            message: "Internal Server Error",
+        });
+    }
+});
+
 
 
 
