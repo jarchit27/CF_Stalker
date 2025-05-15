@@ -16,8 +16,7 @@ const problemSchema = new Schema({
   difficulty:{
     type:String,
     required : true,
-    enum: ['Easy', 'Medium', 'Hard'], // optional
-
+    enum: ['Easy', 'Medium', 'Hard'],
   },
 
   questionLink: {
