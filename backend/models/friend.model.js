@@ -5,7 +5,6 @@ const friendSchema = new Schema({
   handle: {
     type: String,
     required: true,
-    unique: true,
   },
   name: {
     type: String,

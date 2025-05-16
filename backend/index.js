@@ -112,7 +112,6 @@ app.post("/add-friend" , authenticateToken ,async(req, res)=>{
 
     const {handle, name} = req.body;
     const { user } = req.user;
-
     if(!handle){
         return res.status(400).json({error:true , message: "Handle is required"})
     }

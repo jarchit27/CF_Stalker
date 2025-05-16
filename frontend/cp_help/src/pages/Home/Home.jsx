@@ -88,7 +88,7 @@ const handleDelete = async (friendDetails) => {
           return prev;
         }
       });
-    }, 2000); // 2 seconds per card
+    }, 2000);
     return () => clearInterval(interval);
   }
 }, [allFriends]);
@@ -104,7 +104,7 @@ const handleDelete = async (friendDetails) => {
             {allFriends.slice(0, visibleCards).map((item, index) => (
 
               <FriendCard
-                key={item._id}
+                key={item._id }
                 handle= {item.handle}
                 date={item.createdOn}
                 name= {item.name}
