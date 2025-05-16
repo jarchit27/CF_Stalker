@@ -1,4 +1,3 @@
-// src/pages/Compare/CompareResult.jsx
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -369,7 +368,7 @@ export default function CompareResult() {
     ],
   };
   const tagBarOpts = {
-    indexAxis: "y",
+    indexAxis: "x",
     responsive: true,
     maintainAspectRatio: false,
     interaction: { mode: "index", intersect: false },
@@ -379,8 +378,8 @@ export default function CompareResult() {
       legend: { position: "bottom" },
     },
     scales: {
-      x: { beginAtZero: true, title: { display: true, text: "Count" } },
-      y: { title: { display: true, text: "Tag" } },
+      y: { beginAtZero: true, title: { display: true, text: "Count" } },
+      x: { title: { display: true, text: "Tag" } },
     },
   };
 
