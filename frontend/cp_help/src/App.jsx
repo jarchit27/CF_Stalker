@@ -9,7 +9,8 @@ import Profile from "./pages/Profile/Profile";
 import Compare from './pages/Compare/Compare';
 import CompareResult from './pages/Compare/CompareResult';
 import Contests from "./pages/Contests/Contests";
-
+import Modal from 'react-modal';
+Modal.setAppElement('#root');
 
 const App = () => {
   return (

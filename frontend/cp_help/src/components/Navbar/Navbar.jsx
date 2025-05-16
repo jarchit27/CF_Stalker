@@ -40,9 +40,7 @@ const Navbar = ({userInfo,showSearchBar}) => {
         <div onClick={goToProblems}>Problems</div>
         <div onClick={goToCompare}>Compare</div>
         <div onClick={goToContests}>Contests</div>
-
       </div>
-
       { showSearchBar &&(
       <SearchBar 
         value={searchQuery} 

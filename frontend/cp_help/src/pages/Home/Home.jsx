@@ -10,6 +10,8 @@ import axiosInstance from '../../utils/axiosInstance';
 const Home = () => {
 
   const[allFriends,setAllFriends] = useState([]);
+  const [visibleCards, setVisibleCards] = useState(0);
+
   const[openAddEditModal, setOpenAddEditModal ] = useState({
     isShown:false,
     type:"add",
@@ -70,8 +72,27 @@ const handleDelete = async (friendDetails) => {
     useEffect(()=>{
     getUserInfo();
     getAllFriends();
+
     return () =>{};
   }, []);
+
+  useEffect(() => {
+  if (allFriends.length > 0) {
+    let index = 0;
+    const interval = setInterval(() => {
+      setVisibleCards((prev) => {
+        if (prev < allFriends.length) {
+          return prev + 1;
+        } else {
+          clearInterval(interval);
+          return prev;
+        }
+      });
+    }, 2000);
+    return () => clearInterval(interval);
+  }
+}, [allFriends]);
+
 
 
   return (
@@ -80,12 +101,10 @@ const handleDelete = async (friendDetails) => {
       <Navbar  userInfo={userInfo} showSearchBar={true}/>
       <div className='container mx-auto'>
       <div className='grid grid-cols-3 gap-4 mt-8'>
-          {/* <FriendCard handle="jain_01" name="ARchit"></FriendCard> */}
-
-          {allFriends.map((item, index)=>(
+            {allFriends.slice(0, visibleCards).map((item, index) => (
 
               <FriendCard
-                key={item._id}
+                key={item._id }
                 handle= {item.handle}
                 date={item.createdOn}
                 name= {item.name}
@@ -104,7 +123,7 @@ const handleDelete = async (friendDetails) => {
     </div>
 
     <button 
-          className='w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-500 hover:bg-blue-600 absolute right-10 bottom-10' 
+          className='w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-500 hover:bg-blue-600 fixed right-10 bottom-10' 
           onClick={() =>{
             setOpenAddEditModal({isShown:true, type:"add" , data:null});
           }}>
@@ -131,7 +150,6 @@ const handleDelete = async (friendDetails) => {
             getAllFriends = {getAllFriends}
           ></AddEditFriend>
         </Modal>
-
     </>
   )
 }
