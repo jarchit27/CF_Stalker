@@ -8,6 +8,7 @@ import Problems from "./pages/Problems/Problems";
 import Profile from "./pages/Profile/Profile";
 import Compare from './pages/Compare/Compare';
 import CompareResult from './pages/Compare/CompareResult';
+import Contests from "./pages/Contests/Contests";
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/problems/:handle' element={<Problems />} />
         <Route path="/compare" element={<Compare />} />
         <Route path="/compare-result" element={<CompareResult />} />
+        <Route path="/contests" element={<Contests />} />
       </Routes>
     </Router>
   );

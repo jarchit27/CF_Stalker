@@ -20,6 +20,7 @@ const Navbar = ({userInfo,showSearchBar}) => {
   const goToCompare = () => {
     navigate("/Compare");
   };
+  const goToContests = () => navigate("/contests");
   
   const showProfile =()=>{
     navigate("/profile/" + userInfo.codeforcesHandle);
@@ -38,6 +39,7 @@ const Navbar = ({userInfo,showSearchBar}) => {
         <div onClick={goToHome}>Home</div>
         <div onClick={goToProblems}>Problems</div>
         <div onClick={goToCompare}>Compare</div>
+        <div onClick={goToContests}>Contests</div>
 
       </div>
 
