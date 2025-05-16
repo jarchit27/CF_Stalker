@@ -1,29 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MdCreate, MdDelete, MdLocationOn, MdEmojiEvents, MdCode } from 'react-icons/md';
-
-const getColorByRating = (rating) => {
-  if (!rating) return 'text-gray-500';
-  if (rating < 1200) return 'text-gray-500';
-  if (rating < 1400) return 'text-green-600';
-  if (rating < 1600) return 'text-cyan-600';
-  if (rating < 1900) return 'text-blue-600';
-  if (rating < 2100) return 'text-purple-600';
-  if (rating < 2300) return 'text-orange-600';
-  if (rating < 2400) return 'text-red-600';
-  return 'text-red-700';
-};
-
-const getBgColorByRating = (rating) => {
-  if (!rating) return 'bg-gray-100';
-  if (rating < 1200) return 'bg-gray-100';
-  if (rating < 1400) return 'bg-green-50';
-  if (rating < 1600) return 'bg-cyan-50';
-  if (rating < 1900) return 'bg-blue-50';
-  if (rating < 2100) return 'bg-purple-50';
-  if (rating < 2300) return 'bg-orange-50';
-  if (rating < 2400) return 'bg-red-50';
-  return 'bg-red-100';
-};
+import { getBgColorByRating, getColorByRating } from '../../utils/helper';
 
 const FriendCard = ({ handle, name, onEdit, onDelete, onViewAnalysis }) => {
   const [userData, setUserData] = useState(null);

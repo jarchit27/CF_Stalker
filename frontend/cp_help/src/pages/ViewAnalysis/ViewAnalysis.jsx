@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Line, Bar, Doughnut } from 'react-chartjs-2';
 import axiosInstance from '../../utils/axiosInstance';
-
+import Navbar from '../../components/Navbar/Navbar';
+import { getColorByRating, getRankTitle } from '../../utils/helper';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,7 +15,6 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import Navbar from '../../components/Navbar/Navbar';
 
 ChartJS.register(
   CategoryScale,
@@ -118,30 +118,6 @@ const ViewAnalysis = () => {
     fetchData();
   }, [handle, navigate]);
 
-  const getColorClass = (rating) => {
-    if (!rating) return "text-gray-600";
-    if (rating < 1200) return "text-gray-600";
-    if (rating < 1400) return "text-green-600";
-    if (rating < 1600) return "text-cyan-600";
-    if (rating < 1900) return "text-blue-600";
-    if (rating < 2100) return "text-violet-600";
-    if (rating < 2400) return "text-yellow-600";
-    return "text-red-600";
-  };
-
-  const getRankTitle = (rating) => {
-    if (!rating) return "Unrated";
-    if (rating < 1200) return "Newbie";
-    if (rating < 1400) return "Pupil";
-    if (rating < 1600) return "Specialist";
-    if (rating < 1900) return "Expert";
-    if (rating < 2100) return "Candidate Master";
-    if (rating < 2400) return "Master";
-    if (rating < 2600) return "International Master";
-    if (rating < 3000) return "Grandmaster";
-    return "Legendary Grandmaster";
-  };
-
   const formatVerdict = (verdict) => {
     const verdictMap = {
       'OK': 'Accepted',
@@ -236,7 +212,7 @@ const ViewAnalysis = () => {
               <div className="text-center md:text-left">
                 <h1 className="text-2xl md:text-3xl font-bold">{profileData.firstName || ''} {profileData.lastName || ''}</h1>
                 <div className="text-lg font-medium mb-1">@{handle}</div>
-                <div className={`text-xl font-bold ${getColorClass(profileData.rating)}`}>
+                <div className={`text-xl font-bold ${getColorByRating(profileData.rating)}`}>
                   {getRankTitle(profileData.rating)} ({profileData.rating || 'Unrated'})
                 </div>
                 <div className="text-sm opacity-80 mt-2">
@@ -249,7 +225,7 @@ const ViewAnalysis = () => {
                   <div className="grid grid-cols-2 gap-4 text-center">
                     <div>
                       <div className="text-sm">Max Rating</div>
-                      <div className={`text-xl font-bold ${getColorClass(profileData.maxRating)}`}>
+                      <div className={`text-xl font-bold ${getColorByRating(profileData.maxRating)}`}>
                         {profileData.maxRating || 'N/A'}
                       </div>
                     </div>
