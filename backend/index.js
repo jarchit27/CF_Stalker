@@ -200,7 +200,7 @@ app.delete("/delete-friend/:friendId" , authenticateToken ,async(req, res)=>{
 
 app.get("/get-all-friends/" , authenticateToken ,async(req, res)=>{
     const {user} = req.user;
-    // await new Promise(resolve => setTimeout(resolve, 2000));
+    
 
     try{
         const friends = await Friend.find({userId: user._id});

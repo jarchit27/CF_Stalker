@@ -8,7 +8,8 @@ import Problems from "./pages/Problems/Problems";
 import Profile from "./pages/Profile/Profile";
 import Compare from './pages/Compare/Compare';
 import CompareResult from './pages/Compare/CompareResult';
-
+import Modal from 'react-modal';
+Modal.setAppElement('#root');
 
 const App = () => {
   return (
