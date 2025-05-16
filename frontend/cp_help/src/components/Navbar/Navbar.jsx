@@ -17,6 +17,10 @@ const Navbar = ({userInfo,showSearchBar}) => {
   const goToProblems =()=>{
     navigate("/problems/" + userInfo.codeforcesHandle);
   }
+  const goToCompare = () => {
+    navigate("/Compare");
+  };
+  
   const showProfile =()=>{
     navigate("/profile/" + userInfo.codeforcesHandle);
   }
@@ -33,6 +37,8 @@ const Navbar = ({userInfo,showSearchBar}) => {
         <h2 className="text-xl font-medium text-black py-2">CodeSphere</h2>
         <div onClick={goToHome}>Home</div>
         <div onClick={goToProblems}>Problems</div>
+        <div onClick={goToCompare}>Compare</div>
+
       </div>
 
       { showSearchBar &&(

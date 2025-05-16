@@ -6,6 +6,9 @@ import { Navigate } from "react-router-dom";
 import ViewAnalysis from "./pages/ViewAnalysis/ViewAnalysis";
 import Problems from "./pages/Problems/Problems";
 import Profile from "./pages/Profile/Profile";
+import Compare from './pages/Compare/Compare';
+import CompareResult from './pages/Compare/CompareResult';
+
 
 const App = () => {
   return (
@@ -18,6 +21,8 @@ const App = () => {
         <Route path="/viewanalysis/:handle" element={<ViewAnalysis />} />
         <Route path='/profile/:handle' element={<Profile />} />
         <Route path='/problems/:handle' element={<Problems />} />
+        <Route path="/compare" element={<Compare />} />
+        <Route path="/compare-result" element={<CompareResult />} />
       </Routes>
     </Router>
   );
