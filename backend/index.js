@@ -198,18 +198,17 @@ app.delete("/delete-friend/:friendId" , authenticateToken ,async(req, res)=>{
     }
 });
 
-
-app.get("/get-all-friends/" , authenticateToken ,async(req, res)=>{44
+app.get("/get-all-friends/" , authenticateToken ,async(req, res)=>{
     const {user} = req.user;
+    // await new Promise(resolve => setTimeout(resolve, 2000));
 
     try{
-        const friends = await Friend.find({userId: user._id}).sort({isPinned:-1});
+        const friends = await Friend.find({userId: user._id});
         return res.json({
             error: false,
             friends,
             message:"All friends successfully",
         });
-
     }
     catch(error){
         return res.status(500).json({
